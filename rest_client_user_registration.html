@@ -1,0 +1,43 @@
+<html>
+<body>
+    <div class="register_user">
+    <h1>Regisztrálni a Felhasználót</h1>
+    <form method="get">
+        <input type="text" name="vezeteknev" placeholder="VezetékNév" id="vezeteknev" required="required" /><br/>
+        <input type="text" name="keresztnev" placeholder="KeresztNév" id="keresztnev" required="required" /><br/>
+        <input type="text" name="szuletesiev" placeholder="SzületésiÉv" id="szuletesiev" required="required" /><br/>		
+        <button type="submit" onclick="registeruserfunc()">Küldés</button>
+		<br>
+		<br>
+        <input type="text" name="results" placeholder="" id="results" />
+    </form>
+    </div>
+	
+		
+    <script>
+        function registeruserfunc(){
+            var baseurl = "http://localhost:8080";
+            var funcurl = "/registerUser";
+            var vezeteknev = document.getElementById("vezeteknev").value;
+            var keresztnev = document.getElementById("keresztnev").value;
+            var szuletesiev = document.getElementById("szuletesiev").value;
+            var url = baseurl+funcurl
+			console.log("The url: " + url+"vezeteknev="+vezeteknev+"&keresztnev="+keresztnev+"&szuletesiev="+szuletesiev)
+            var xmlHttp = new XMLHttpRequest();						
+			xmlHttp.onreadystatechange = function () {
+			  if(xmlHttp.readyState === XMLHttpRequest.DONE && xmlHttp.status === 200) {
+				console.log(xmlHttp.responseText);
+//				var converted = JSON.parse(xmlHttp.responseText)
+//				console.log(converted)				
+				document.write(xmlHttp.responseText);
+                document.getElementById("results").value = xmlHttp.responseText
+			  }
+			};			
+			xmlHttp.open( "POST", url, true); // false for synchronous request  
+			xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xmlHttp.send( "vezeteknev="+vezeteknev+"&keresztnev="+keresztnev+"&szuletesiev="+szuletesiev );
+			document.write(xmlHttp.responseText);
+       }	
+    </script>
+
+</body></html>
