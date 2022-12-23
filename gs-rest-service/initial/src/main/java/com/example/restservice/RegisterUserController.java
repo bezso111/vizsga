@@ -15,17 +15,18 @@ public class RegisterUserController {
 
     @PostMapping("/registerUser")
     public RegisterUserResponse registerUser(
-                                 @RequestParam(value = "vezeteknev") String vezeteknev,
-                                 @RequestParam(value = "keresztnev") String keresztnev,
-                                 @RequestParam(value = "szuletesiev") String szuletesinev
+                                 @RequestParam(value = "email") String username,
+                                 @RequestParam(value = "password") String pasword,
+                                 @RequestParam(value = "name") String name
     ) {
 
-        String url = "jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC";
+        String url = "jdbc:mysql://localhost:3306/vizsga?serverTimezone=UTC";
         Adatbazis ab = new Adatbazis(url, "root", "");
-        if (ab.insertIntoUserTable(vezeteknev, keresztnev, szuletesinev)) {
-            return new RegisterUserResponse(counter.incrementAndGet(), "Sikeres küldés és tárolás");
+        int hiba = ab.insertIntoUserTable(username, pasword, name);
+        if (hiba == 0 ) {
+            return new RegisterUserResponse(counter.incrementAndGet(), "Sikeres küldés és tárolás", hiba);
         } else {
-            return new RegisterUserResponse(counter.incrementAndGet(), "Sikeres küldés, de rossz tárolás!");
+            return new RegisterUserResponse(counter.incrementAndGet(), "Sikeres küldés, de hibás tárolás",hiba);
         }
     }
 }

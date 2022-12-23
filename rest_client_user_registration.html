@@ -1,43 +1,67 @@
+<!DOCTYPE html>
 <html>
-<body>
-    <div class="register_user">
-    <h1>Regisztrálni a Felhasználót</h1>
-    <form method="get">
-        <input type="text" name="vezeteknev" placeholder="VezetékNév" id="vezeteknev" required="required" /><br/>
-        <input type="text" name="keresztnev" placeholder="KeresztNév" id="keresztnev" required="required" /><br/>
-        <input type="text" name="szuletesiev" placeholder="SzületésiÉv" id="szuletesiev" required="required" /><br/>		
-        <button type="submit" onclick="registeruserfunc()">Küldés</button>
-		<br>
-		<br>
-        <input type="text" name="results" placeholder="" id="results" />
-    </form>
-    </div>
-	
-		
-    <script>
-        function registeruserfunc(){
-            var baseurl = "http://localhost:8080";
-            var funcurl = "/registerUser";
-            var vezeteknev = document.getElementById("vezeteknev").value;
-            var keresztnev = document.getElementById("keresztnev").value;
-            var szuletesiev = document.getElementById("szuletesiev").value;
-            var url = baseurl+funcurl
-			console.log("The url: " + url+"vezeteknev="+vezeteknev+"&keresztnev="+keresztnev+"&szuletesiev="+szuletesiev)
-            var xmlHttp = new XMLHttpRequest();						
-			xmlHttp.onreadystatechange = function () {
-			  if(xmlHttp.readyState === XMLHttpRequest.DONE && xmlHttp.status === 200) {
-				console.log(xmlHttp.responseText);
-//				var converted = JSON.parse(xmlHttp.responseText)
-//				console.log(converted)				
-				document.write(xmlHttp.responseText);
-                document.getElementById("results").value = xmlHttp.responseText
-			  }
-			};			
-			xmlHttp.open( "POST", url, true); // false for synchronous request  
-			xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xmlHttp.send( "vezeteknev="+vezeteknev+"&keresztnev="+keresztnev+"&szuletesiev="+szuletesiev );
-			document.write(xmlHttp.responseText);
-       }	
-    </script>
-
-</body></html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Vizsga User regisztrácíó">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Bencze Zsolt">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">              
+    </head>
+    <body>
+        <div class="register_user">
+            <h1>Regisztrálni a Felhasználót</h1>
+       
+            <input type="text" name="email" placeholder="Email cím" size="20" id="email" required="required" /><br/>
+            <input type="text" name="password" placeholder="Password" size="20" id="password" required="required" /><br/>
+            <input type="text" name="name" placeholder="Teljes név" size="80" id="name" required="required" /><br/>
+            <button type="button" onclick="registeruserfunc()">Küldés</button>
+            <br>
+            <br>
+            <input type="text" name="results" placeholder="" size="200" id="results" />
+        </div>
+        
+        <script>
+            function registeruserfunc(){
+                var baseurl = "http://localhost:8080";
+                var funcurl = "/registerUser";
+                var hiba = "";
+                var email = document.getElementById("email").value;
+                var password = document.getElementById("password").value;
+                var name = document.getElementById("name").value;
+                var url = baseurl+funcurl
+                var re = /\S+@\S+\.\S+/;
+                if (!re.test(email)) { hiba=hiba+"Hibás email cím! "}
+                if (password.length <8) {hiba=hiba+"A jelszó legalább 8 karakter! "}
+                if (name === "") {hiba=hiba+"Nincs név! "}
+                if (hiba === "") {
+                    console.log("The url: " + url+"email="+email+"&password="+password+"&name="+name)
+                    var xmlHttp = new XMLHttpRequest();						
+                    xmlHttp.onload = function () {
+                        console.log("proba");
+                        if(xmlHttp.readyState === XMLHttpRequest.DONE && xmlHttp.status === 200) {
+                            console.log(xmlHttp.responseText);
+            				var converted = JSON.parse(xmlHttp.responseText)
+            				console.log(converted)				
+                            if (converted.errorcode===0) {
+                                document.getElementById("results").value = "Sikeres Regisztrácíó!";
+                            } else if (converted.errorcode===1062 ) {
+                                document.getElementById("results").value = "Ez az email cím már szerepelt";
+                            } else
+                            { 
+                                document.getElementById("results").value = converted.content;
+                            }
+                        } else {
+                            document.getElementById("results").value = "Hibás ajax hívás!"
+                        }
+                    };			
+                    xmlHttp.addEventListener("error", () => { document.getElementById("results").value = "Hiás szerver elérés!" })
+                    xmlHttp.open( "POST", url, true); // false for synchronous request  
+                    xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    xmlHttp.send( "email="+email+"&password="+password+"&name="+name );
+                } else {
+                    document.getElementById("results").value = hiba
+                }
+            }
+        </script>
+    </body>
+</html>

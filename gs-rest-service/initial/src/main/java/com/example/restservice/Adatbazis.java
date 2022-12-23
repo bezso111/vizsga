@@ -1,5 +1,8 @@
 package com.example.restservice;
 
+//import com.sun.org.apache.xpath.internal.objects.XString;
+//import com.sun.org.apache.xpath.internal.operations.String;
+
 import java.io.Closeable;
 import java.sql.*;
 import java.util.ArrayList;
@@ -52,18 +55,18 @@ public class Adatbazis implements Closeable {
         }
     }
 
-    public boolean insertIntoUserTable(String vezeteknev,
-                                       String keresztnev, String szuletesiev) {
+    public int insertIntoUserTable(String email,
+                                                String password, String nev) {
         try {
             Statement stmt = conn.createStatement();
-            String command = "INSERT INTO user (vezeteknev, keresztnev, szuletesiev)" +
-                    " VALUES ('" + vezeteknev + "','" + keresztnev + "','" + szuletesiev +  "');";
+            String command = "INSERT INTO users (username, password, name)" +
+                    " VALUES ('" + email + "','" + password + "','" + nev +  "');";
             System.out.println(command);
             stmt.execute(command);
-            return true;
+            return 0;
         } catch (SQLException se) {
-            System.out.println("Nem sikerült beilleszteni a user táblába! " + se.toString());
-            return false;
+            System.out.println("Nem sikerült beilleszteni a users táblába! " + se.toString());
+            return se.getErrorCode();
         }
     }
 
