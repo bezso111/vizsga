@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="hu">
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="Vizsga User regisztrácíó">
         <meta name="keywords" content="HTML, CSS, JavaScript">
         <meta name="author" content="Bencze Zsolt">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">              
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+		<link rel="stylesheet" href="Pénz-kereső.css">		
+		<title>Regisztráció</title>
     </head>
     <body>
+		<div id="fejlec">
+			<a href="Pénz-kereső.html"> <button>Vissza a kezdőlapra</button></a>
+		</div>
         <div class="register_user">
             <h1>Regisztrálni a Felhasználót</h1>
        
@@ -17,7 +22,7 @@
             <button type="button" onclick="registeruserfunc()">Küldés</button>
             <br>
             <br>
-            <input type="text" name="results" placeholder="" size="200" id="results" />
+			Hibaüzenet:<input type="text" name="results" placeholder="" size="200" id="results" />
         </div>
         
         <script>
