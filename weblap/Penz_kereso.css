@@ -2,7 +2,7 @@ ul.navbar-nav {
     width: 800px;
     padding: 10px;
     /*font-size: 30px;*/
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     background-color: rgb(0, 66, 128);
     text-align: center ;
     /*border: dotted;*/
@@ -15,10 +15,10 @@ li.nav-item{
     body {
     background-image: url("./kepek/hatterkep2.jpg") ;opacity: 1;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; 
     background-position: center;
-    
-    height: 1300px;
+	background-attachment: fixed;
+/*    height: 1300px;*/
     }
 
     div form.regisztracio input{
@@ -29,7 +29,7 @@ li.nav-item{
     }
     #fejlec{
         padding: 10 px;
-        margin-top: 40px;
+        margin: 20px;
     }
 
     
