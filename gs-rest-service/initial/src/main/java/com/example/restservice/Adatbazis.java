@@ -10,6 +10,7 @@ import java.util.List;
 
 public class Adatbazis implements Closeable {
     Connection conn = null;
+    int errorcode = 0;
 
     public Adatbazis(String url, String username, String password) {
         try {
@@ -44,19 +45,7 @@ public class Adatbazis implements Closeable {
         System.out.println("Nem is kellett lebontani az adatbázis kapcsolatot a closeból!");
     }
 
-    public boolean dropTable(String table) {
-        try {
-            Statement stmt = conn.createStatement();
-            stmt.execute("DROP TABLE IF EXISTS " + table + ";");
-            return true;
-        } catch (SQLException se) {
-            System.out.println("Nem sikerült eldobni a tanulók táblát! " + se.toString());
-            return false;
-        }
-    }
-
-    public int insertIntoUserTable(String email,
-                                                String password, String nev) {
+    public int insertIntoUserTable(String email, String password, String nev) {
         try {
             Statement stmt = conn.createStatement();
             String command = "INSERT INTO users (username, password, name)" +
@@ -70,37 +59,32 @@ public class Adatbazis implements Closeable {
         }
     }
 
-    public String selectTable(String table) {
+    public UserSelect selectLogin(String username, String password) {
         try {
             Statement  stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM " + table + ";");
-            ResultSetMetaData meta = result.getMetaData();
+            ResultSet result = stmt.executeQuery("SELECT id,name FROM users WHERE username='"+username+"' AND password='"+password+"';");
 
-            String content = "<br/>";
-            for(int i=1; i <= meta.getColumnCount(); ++i) {
-                content += (meta.getColumnName(i) + "    ");
+            if (result.next()) {
+                errorcode=0;
+                int id=result.getInt("id");
+                String name=result.getString("name");
+                return new UserSelect(id,name);
+            } else {
+                errorcode=0;
+                return new UserSelect(0,"Nincs ilyen felhasználó jelszó páros!");
             }
-            content += "<br/>";
-            content += ("---------------------------------------------------------------------------------<br/>");
-
-            while(result.next()) {
-                for(int i=1; i <= meta.getColumnCount(); ++i) {
-                    content += (result.getString(i) + "    ");
-                }
-                content += "<br/>";
-            }
-            return content;
         } catch (SQLException se) {
             String errormsg = ("Nem sikerült a select! " + se.toString() + "<br/>");
-            return errormsg;
+            errorcode = se.getErrorCode();
+            return new UserSelect(0,errormsg);
         }
     }
 
-    public List<String> selectTableAsList(String table) {
+    public List<String> selectTableAsList(String select) {
         List<String> contents = new ArrayList<>();
         try {
             Statement  stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery("SELECT * FROM " + table + ";");
+            ResultSet result = stmt.executeQuery(select);
             ResultSetMetaData meta = result.getMetaData();
 
             String content = "";
@@ -118,10 +102,12 @@ public class Adatbazis implements Closeable {
                 }
                 contents.add(content);
             }
+            errorcode = 0;
             return contents;
         } catch (SQLException se) {
             String errormsg = ("Nem sikerült a select! " + se.toString() + "<br/>");
             contents.add(errormsg);
+            errorcode = se.getErrorCode();
             return contents;
         }
     }
