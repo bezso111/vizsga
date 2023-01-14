@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
+<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,4 +64,44 @@
     
         
 </body>
+=======
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="Penz_kereso.css">
+		<script src="script.js"></script>
+		<title>Hitel érdekel</title>
+	</head>
+	<body onload="getsession()">
+		<div id="fejlec">
+			<a href="Penz_kereso.html"> <button>Vissza a kezdőlapra</button></a>
+		</div>
+		<div id="login"></div>    
+		<div>
+			<h1>Hitelezési kisokos</h1><br>
+
+			<h3>A hitelezésnek (az általános banki szaknyelvben az angol alapján retail hitelezésnek is hívják) jelentős szerepe van az életciklusokhoz kapcsolódó, különböző finanszírozási igények kisimításában. A lakáscélú jelzáloghitel a fiatalok életindulását segíti, a későbbiekben lehetővé teszi a minőségi lakásmobilitást, a különböző fogyasztási hitelek pedig emelik az életszínvonalat vagy az átmeneti forráshiány menedzselését kezelik. 
+			A hitelezés gazdasági szempontból is nagy jelentőséggel bír, mivel támogatja a fogyasztást és a beruházásokat (pl. új lakások építésével), növeli a gazdaság teljesítményét.</h3><br>
+			<h2>De egy hitelfelvétel hosszú távon hatással van az Ön és családja életére, ezért mindig megfontoltan, körültekintően döntsön!</h2><br>
+			<h3>Ez az oldal olyan lehetőséget biztosit, amely egyszerű, biztonságos és kiszámitható hitelt kinál.</h3> 
+			
+			<div id="table_befektetes">
+				<input type="radio" name="amount" value="1000000">
+				<label>1 millió ft</label>
+				<input type="radio" name="amount" value="2000000">
+				<label>2 millió ft</label>
+				<input type="radio" name="amount" value="5000000">
+				<label>5 millió ft</label><br><br>
+			
+				<input type="radio" name="futamido" value="3">
+				<label>3 hónap</label>
+				<input type="radio" name="futamido" value="6">
+				<label>6 hónap</label><br><br>
+			</div>
+			<button onclick="szamolVegosszeget()">Kamatszámítás</button>
+			<div id="vegosszeg"></div>
+		</div>
+	</body>
+>>>>>>> 971c26d556c6f595cb68e630dd46b0556ad05674
 </html>
