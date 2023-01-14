@@ -1,78 +1,48 @@
 <!DOCTYPE html>
 <html lang="hu">
-<<<<<<< HEAD
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Penz_kereso.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="Penz_kereso.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <title>Belépés</title>
-</head>
-<body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="#főoldal">Főoldal</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Hogyan_mukodik.html">Hogyan müködik?</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Befektetes_erdekel.html">Befektetés érdekel</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="Hitel_erdekel.html">Hitel érdekel</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="rest_client_regisztracio.html">Regisztráció</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="belepes.html">Belépés</a>
-            </li>
-        </ul>
-      </nav>
-    <div id="fejlec">
-
-    </div>
-    <div>
-            <label for="username">Felhasználónév:</label>
-            <input type="text" id="username" name="username">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="Penz_kereso.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <title>Belépés</title>
+    </head>
+    <body onload="getsession()">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="Penz_kereso.html">Főoldal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Hogyan_mukodik.html">Hogyan müködik?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Befektetes_erdekel.html">Befektetés érdekel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Hitel_erdekel.html">Hitel érdekel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="rest_client_regisztracio.html">Regisztráció</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="belepes.html">Belépés</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="login"></div>
+        <div>
+                <label for="username">Felhasználónév:</label>
+                <input type="text" id="username" name="username">
+                
+                <label for="password">Jelszó:</label>
+                <input type="password" id="password" name="password">
+                <button type="button" onclick="login()">Bejelentkezés</button>
+        </div>
+        <div id="results"> </div>
             
-            <label for="password">Jelszó:</label>
-            <input type="password" id="password" name="password">
-            <button type="button" onclick="login()">Bejelentkezés</button>
-    </div>
-    <div id="results">
-
-    </div>
-        
-</body>
-=======
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="Penz_kereso.css">
-		<script src="script.js"></script>
-		<title>Belépés</title>
-	</head>
-	<body>
-		<div id="fejlec">
-			<a href="Penz_kereso.html"> <button>Vissza a kezdőlapra</button></a>
-		</div>
-		<div>
-				<label for="username">Felhasználónév:</label>
-				<input type="text" id="username" name="username">
-				
-				<label for="password">Jelszó:</label>
-				<input type="password" id="password" name="password">
-				<button type="button" onclick="login()">Bejelentkezés</button>
-		</div>
-		<div id="results">
-		</div>			
-	</body>
->>>>>>> 971c26d556c6f595cb68e630dd46b0556ad05674
+    </body>
 </html>

@@ -85,26 +85,6 @@ function getsession() {
 	}
 }
 
-<<<<<<< HEAD:weblap/Penz_kereso.js
-
-
-window.onscroll = function() {myFunction()};
-
-// Get the navbar
-var navbar = document.getElementById("navbar");
-
-// Get the offset position of the navbar
-var sticky = navbar.offsetTop;
-
-// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
-=======
 function lekerdezKamatmerot() {
     // Létrehozzuk az XMLHttpRequest objektumot
     var xhttp = new XMLHttpRequest();
@@ -159,4 +139,3 @@ function lekerdezKamatmerot() {
     }
   }
   
->>>>>>> 971c26d556c6f595cb68e630dd46b0556ad05674:weblap/script.js
