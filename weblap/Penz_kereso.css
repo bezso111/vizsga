@@ -19,12 +19,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center;
-<<<<<<< HEAD
     height: 1300px;
-=======
-	background-attachment: fixed;
-/*    height: 1300px;*/
->>>>>>> refs/remotes/origin/main
     }
 
 div form.regisztracio input{
@@ -32,15 +27,9 @@ div form.regisztracio input{
     color: blue;
     margin-top: 40px;
     }
-<<<<<<< HEAD
 #fejlec{
     padding: 10 px;
     margin-top: 40px;
-=======
-    #fejlec{
-        padding: 10 px;
-        margin: 20px;
->>>>>>> refs/remotes/origin/main
     }
 #table_befektetes{
     margin: 100px;
@@ -62,3 +51,9 @@ img {
     margin: 20px;
     
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
