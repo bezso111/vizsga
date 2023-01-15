@@ -80,6 +80,28 @@ public class Adatbazis implements Closeable {
         }
     }
 
+    public UserSelect selectKamat() {
+        try {
+            Statement  stmt = conn.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT kamat FROM alapkamat;");
+
+            if (result.next()) {
+                errorcode=0;
+                int id=result.getInt("id");
+                String name="Sikerült!";
+                return new UserSelect(id,name);
+            } else {
+                errorcode=0;
+                return new UserSelect(0,"Nincs ilyen felhasználó jelszó páros!");
+            }
+        } catch (SQLException se) {
+            String errormsg = ("Nem sikerült a select! " + se.toString() + "<br/>");
+            errorcode = se.getErrorCode();
+            return new UserSelect(0,errormsg);
+        }
+    }
+
+
     public List<String> selectTableAsList(String select) {
         List<String> contents = new ArrayList<>();
         try {
