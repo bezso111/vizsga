@@ -13,7 +13,7 @@ public class KamatController {
 
     private final AtomicLong counter = new AtomicLong();
 
-    @PostMapping("/kamat")
+    @GetMapping("/kamat")
     public KamatResponse kamat(
 
     ) {

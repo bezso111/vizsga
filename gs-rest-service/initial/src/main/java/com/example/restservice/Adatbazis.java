@@ -87,7 +87,7 @@ public class Adatbazis implements Closeable {
 
             if (result.next()) {
                 errorcode=0;
-                int id=result.getInt("id");
+                int id=result.getInt("kamat");
                 String name="Sikerült!";
                 return new UserSelect(id,name);
             } else {

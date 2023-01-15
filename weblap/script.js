@@ -100,12 +100,13 @@ function szamolVegosszeget() {
 			console.log(converted)				
 			if (converted.errorcode===0 & converted.kamat>0 ) {
 				var kamatmero = converted.kamat;
-				var osszeg = document.querySelector('input[name="amount"]:checked').value;
-				var futamido = document.querySelector('input[name="futamido"]:checked').value;
+				var osszeg = parseInt(document.querySelector('input[name="amount"]:checked').value);
+				var futamido = parseInt(document.querySelector('input[name="futamido"]:checked').value);
 				// A kamat számítása
-				var kamat = osszeg * kamatmero * futamido;			
+				var kamat = osszeg * kamatmero * futamido /100;			
 				// A végösszeg számítása
 				var vegosszeg = osszeg + kamat;
+				console.log("kamat:"+kamat+" osszeg:"+osszeg)
 				document.getElementById("vegosszeg").innerHTML=vegosszeg;
 			} else { 
 				document.getElementById("vegosszeg").innerHTML = converted.name;
@@ -115,8 +116,7 @@ function szamolVegosszeget() {
 		}
 	};			
 	xmlHttp.addEventListener("error", () => { document.getElementById("vegosszeg").innerHTML = "Hibás szerver elérés!" })
-	xmlHttp.open( "POST", url, true); // false for synchronous request  
-	xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlHttp.open( "GET", url, true); // false for synchronous request  
 	xmlHttp.send( );	
 }
 
