@@ -85,26 +85,42 @@ function getsession() {
 	}
 }
 
-function lekerdezKamatmerot() {
-    // Létrehozzuk az XMLHttpRequest objektumot
-    var xhttp = new XMLHttpRequest();
-  
-    // Megadjuk a lekérdezés típusát és címét
-    xhttp.open("GET", "https://www.mnb.hu/Jegybanki_alapkamat_alakulasa", true);
-  
-    // Lekérdezés elküldése
-    xhttp.send();
-  
-    // A válasz fogadása
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        // A kapott adatok feldolgozása
-        var kamatmero = JSON.parse(this.responseText);
-      }
-    };
-  }
+function szamolVegosszeget() {
+	var baseurl = "http://localhost:8080";
+	var funcurl = "/kamat";
+	var hiba = "";
+	var url = baseurl+funcurl
+	console.log("The url: " + url)
+	var xmlHttp = new XMLHttpRequest();						
+	xmlHttp.onload = function () {
+		console.log("proba");
+		if(xmlHttp.readyState === XMLHttpRequest.DONE && xmlHttp.status === 200) {
+			console.log(xmlHttp.responseText);
+			var converted = JSON.parse(xmlHttp.responseText)
+			console.log(converted)				
+			if (converted.errorcode===0 & converted.kamat>0 ) {
+				var kamatmero = converted.kamat;
+				var osszeg = document.querySelector('input[name="amount"]:checked').value;
+				var futamido = document.querySelector('input[name="futamido"]:checked').value;
+				// A kamat számítása
+				var kamat = osszeg * kamatmero * futamido;			
+				// A végösszeg számítása
+				var vegosszeg = osszeg + kamat;
+				document.getElementById("vegosszeg").innerHTML=vegosszeg;
+			} else { 
+				document.getElementById("vegosszeg").innerHTML = converted.name;
+			}
+		} else {
+			document.getElementById("vegosszeg").innerHTML = "Hibás ajax hívás!"
+		}
+	};			
+	xmlHttp.addEventListener("error", () => { document.getElementById("vegosszeg").innerHTML = "Hibás szerver elérés!" })
+	xmlHttp.open( "POST", url, true); // false for synchronous request  
+	xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlHttp.send( );	
+}
 
-  function szamolVegosszeget() {
+  function szamolVegosszeget2() {
     // A formában megadott adatok lekérése
     var osszegInput = document.querySelector('input[name="amount"]:checked');
     var futamidoInput = document.querySelector('input[name="futamido"]:checked');
