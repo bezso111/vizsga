@@ -33,8 +33,11 @@
                 </li>
             </ul>
         </nav>
-        <div id="login"></div>
-        <div>
+        <div class="container">
+			<div class="row" id="login"></div>
+			<div class="row">
+				<div class="col-12">
+
             <h3>Ha befektetésekről van szó, mindenki másban bízik. Van, aki az állampapírra esküszik, van, aki csak a részvényekre, de sokan választják a befektetési alapokat is, hogy jó hozamokat érjenek el.<br>Létezik egyáltalán általános recept arra, hogy a legjobb módon fektessük be a pénzünket?</h3> 
             <h2>Derítsük ki együtt!</h2><br>
             <h3>A mai világban szükségünk van arra, hogy biztonságban érezzük magunkat. Fontos, hogy legalább amiatt ne kelljen aggódnunk, hogy ha valami nem várt esemény történik, például munkahely elvesztés, tartós betegség, extra kiadások, akkor hogyan vészeljük át a következő hónapokat, esetleg éveket. Ilyenkor értékelődik fel igazán, ha rendelkezünk megtakarításokkal, befektetésekkel, viszont korántsem mindegy, milyenekkel.
@@ -52,7 +55,7 @@
             Ne feledd! Magunkat akarjuk etetni, nem pedig az inflációt!
             Ez az oldal egy olyan biztonságos megoldást nyújt számodra, ahol a megtakaritásod megtartja az értékét és te választhatod meg, hogy mennyi időre szeretnéd kamatoztatmi.
             Ötvözi a biztonságos befektetések előnyeit és a pénzromlást is megelőzi.</h3><br>
-        </div>
+                
         <div id="table_befektetes">
             <input type="radio" name="amount" value="1000000">
             <label>1 millió ft</label>
@@ -64,10 +67,13 @@
             <input type="radio" name="futamido" value="3">
             <label>3 hónap</label>
             <input type="radio" name="futamido" value="6">
-            <label>6 hónap</label>
-            <br><br>
+            <label>6 hónap</label><br><br>
+            <button onclick="szamolVegosszeget()">Kamatszámítás</button>
+            <div id="vegosszeg"></div> 
         </div>
-        <button onclick="szamolVegosszeget()">Kamatszámítás</button>
-        <div id="vegosszeg"></div> 
+            
+        
+        </div>
+    </div> 
     </body>
 </html>
