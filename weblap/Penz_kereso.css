@@ -1,19 +1,18 @@
 ul.navbar-nav {
-    width: 100%;
+    width: 99%;
     padding: 10px;
-    /*font-size: 30px;*/
-    /*margin-top: 20px;*/
     background-color: rgb(0, 66, 128);
     text-align: center ;
-    font-weight: 500 px;
-    font-size: larger;
-    /*border: dotted;*/
+    font-style: bold;
+    font-size: 30px;
     }
-li.nav-item{
+
+    li.nav-item{
     margin: 10px;
     border: 5px;
     border-radius: 20px;
     }   
+
 body {
     background-image: url("./kepek/hatterkep2.jpg") ;
     background-repeat: no-repeat;
@@ -27,12 +26,14 @@ div form.regisztracio input{
     color: blue;
     margin-top: 40px;
     }
+
 #login{
     padding: 10 px;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10px;
     }
+
 #table_befektetes{
     margin: 100px;
     text-align: center;
@@ -42,16 +43,16 @@ div form.regisztracio input{
     border: dotted;
     background-color: rgba(124, 126, 129, 0.5);
     width: 50%;
-    padding: 50px;
-    
+    padding: 50px;   
 }
+
 h1{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-display: 10;
 }
+
 img {
-    margin: 20px;
-    
+    margin: 20px; 
 }
 
 .sticky {
