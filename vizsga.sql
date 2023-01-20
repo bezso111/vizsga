@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS `befektetes` (
   `befekteto_id` int(11) NOT NULL,
   `osszeg` int(11) NOT NULL,
   `futamido` int(11) NOT NULL,
+  `kamat` int(11) NOT NULL,
   `befektetes` tinyint(1) NOT NULL,
   `partner_id` int(11) DEFAULT NULL,
   `oszerendeles_datum` int(11) DEFAULT NULL,
