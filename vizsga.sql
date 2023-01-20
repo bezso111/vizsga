@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `alapkamat` (
 --
 
 INSERT INTO `alapkamat` (`kamat`) VALUES
-(125);
+(25);
 
 -- --------------------------------------------------------
 
