@@ -55,25 +55,31 @@
             Ez az oldal egy olyan biztonságos megoldást nyújt számodra, ahol a megtakaritásod megtartja az értékét és te választhatod meg, hogy mennyi időre szeretnéd kamatoztatmi.
             Ötvözi a biztonságos befektetések előnyeit és a pénzromlást is megelőzi.</h3><br>
 
-        <div id="table_befektetes">
-            <input type="radio" name="amount" value="1000000">
-            <label>1 millió ft</label>
-            <input type="radio" name="amount" value="2000000">
-            <label>2 millió ft</label>
-            <input type="radio" name="amount" value="5000000">
-            <label>5 millió ft</label>
-            <br><br>
-            <input type="radio" name="futamido" value="3">
-            <label>3 hónap</label>
-            <input type="radio" name="futamido" value="6">
-            <label>6 hónap</label><br><br>
-            <button onclick="szamolVegosszeget()">Kamatszámítás</button>
-            <div id="vegosszeg"></div> 
+                 </div>
+             </div>
+        </div>
+       
+        <div class="container">
+			<div class="row">
+				<div class="col-12">
+                    
+                    <div id="table_befektetes">
+                    <input type="radio" name="amount" value="1000000" checked>
+                    <label>1 millió ft</label>
+                    <input type="radio" name="amount" value="2000000">
+                    <label>2 millió ft</label>
+                    <input type="radio" name="amount" value="5000000">
+                    <label>5 millió ft</label>
+                    <br><br>
+                    <input type="radio" name="futamido" value="3" checked>
+                    <label>3 hónap</label>
+                    <input type="radio" name="futamido" value="6">
+                    <label>6 hónap</label><br><br>
+                    <button onclick="szamolVegosszeget()">Kamatszámítás</button>
+                    <div id="vegosszeg"></div> 
             
-                    </div>
                 </div>
             </div>
         </div>
-        </div> 
     </body>
 </html>
