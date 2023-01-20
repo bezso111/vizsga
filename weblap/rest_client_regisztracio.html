@@ -35,18 +35,24 @@
 				</li>
 			</ul>
 		</nav>
-		<div id="login"></div>
+
+        <div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div id="register_user">
+						<h1>Regisztráció</h1>
+				
+						<input type="text" name="email" placeholder="Email cím" size="30" id="email" required="required" /><br/>
+						<input type="text" name="password" placeholder="Password" size="30" id="password" required="required" /><br/>
+						<input type="text" name="name" placeholder="Teljes név" size="60" id="name" required="required" /><br/>
+						<br>
+						<button type="button" onclick="registeruserfunc()">Küldés</button>
+						<br>
+						<br>
+						Hibaüzenet:<input type="text" name="results" placeholder="" size="100" id="results" />
+					</div>
+				</div>
+			</div>
 		</div>
-        <div class="register_user">
-            <h1>Regisztráció</h1>
-       
-            <input type="text" name="email" placeholder="Email cím" size="20" id="email" required="required" /><br/>
-            <input type="text" name="password" placeholder="Password" size="20" id="password" required="required" /><br/>
-            <input type="text" name="name" placeholder="Teljes név" size="80" id="name" required="required" /><br/>
-            <button type="button" onclick="registeruserfunc()">Küldés</button>
-            <br>
-            <br>
-			Hibaüzenet:<input type="text" name="results" placeholder="" size="200" id="results" />
-        </div>  
     </body>
 </html>

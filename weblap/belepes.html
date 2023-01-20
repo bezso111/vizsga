@@ -33,13 +33,16 @@
                 </li>
             </ul>
         </nav>
-        <div id="login"></div>
-        <div>
+
+        <div class="container">
+			<div class="row">
+				<div class="col-12">
+                    <div id="login"></div>
+
                 <label for="username">Felhasználónév:</label>
                 <input type="text" id="username" name="username">
-                
                 <label for="password">Jelszó:</label>
-                <input type="password" id="password" name="password">
+                <input type="text" id="password" name="password">
                 <button type="button" onclick="login()">Bejelentkezés</button>
         </div>
         <div id="results"> </div>

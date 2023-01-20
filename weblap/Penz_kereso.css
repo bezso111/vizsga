@@ -5,6 +5,7 @@ ul.navbar-nav {
     text-align: center ;
     font-style: bold;
     font-size: 30px;
+    text-shadow: 1px 1px 1px white;
     }
 
     li.nav-item{
@@ -23,12 +24,35 @@ body {
     }
 
 div form.regisztracio input{
+    text-align: center ;
+    font-display: 12;
     background-color: bisque;
     color: blue;
     margin-top: 40px;
     }
 
+button {
+    width: 200px;
+    height: 75px;
+    padding: 10px;
+    text-align: center;
+    font-size: 40px;
+    box-shadow: 2px 2px 2px black;
+    text-shadow: 1px 1px 1px black;
+}
+
+input[type="text"] {
+    height: 50px;
+
+}
+
+label {
+    font-size: 25px;
+}
+
+
 #login{
+    font-display: 12;
     padding: 10 px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -41,15 +65,15 @@ div form.regisztracio input{
     font-size: x-large;
     font-style: bold;
     color: white;
-    border: dotted;
     background-color: rgba(124, 126, 129, 0.5);
     width: 50%;
     padding: 50px;   
 }
 
-h1{
+h1, h2, h3 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-display: 10;
+    font-display: 12;
+    text-shadow: 1px 1px 1px white;
 }
 
 img {
