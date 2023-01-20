@@ -7,6 +7,7 @@ function registeruserfunc() {
 	var password = document.getElementById("password").value;
 	var name = document.getElementById("name").value;
 	var url = baseurl+funcurl
+	console.log("proba")
 	var re = /\S+@\S+\.\S+/;
 	if (!re.test(email)) { hiba=hiba+"Hibás email cím! "}
 	if (password.length <8) {hiba=hiba+"A jelszó legalább 8 karakter! "}
@@ -21,15 +22,19 @@ function registeruserfunc() {
 				var converted = JSON.parse(xmlHttp.responseText)
 				console.log(converted)				
 				if (converted.errorcode===0) {
-					document.getElementById("results").value = "Sikeres Regisztrácíó!";
+					document.getElementById("results").innerHTML = "Sikeres Regisztrácíó!";
+					document.getElementById("results").style.backgroundColor="#00ff00";
 				} else if (converted.errorcode===1062 ) {
-					document.getElementById("results").value = "Ez az email cím már szerepelt";
+					document.getElementById("results").innerHTML = "Ez az email cím már szerepelt";
+					document.getElementById("results").style.backgroundColor="#ff0000"; 
 				} else
 				{ 
-					document.getElementById("results").value = converted.content;
+					document.getElementById("results").innerHTML = converted.content;
+					document.getElementById("results").style.backgroundColor="#ff0000" ;
 				}
 			} else {
-				document.getElementById("results").value = "Hibás ajax hívás!"
+				document.getElementById("results").innerHTML = "Hibás ajax hívás!";
+				document.getElementById("results").style.backgroundColor="#ff0000" ;
 			}
 		};			
 		xmlHttp.addEventListener("error", () => { document.getElementById("results").value = "Hiás szerver elérés!" })
@@ -37,7 +42,8 @@ function registeruserfunc() {
 		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xmlHttp.send( "email="+email+"&password="+password+"&name="+name );
 	} else {
-		document.getElementById("results").value = hiba
+		document.getElementById("results").innerHTML = hiba;
+		document.getElementById("results").style.backgroundColor="#ff0000" ;
 	}
 }
 
@@ -57,18 +63,21 @@ function login() {
 			var converted = JSON.parse(xmlHttp.responseText)
 			console.log(converted)				
 			if (converted.errorcode===0 & converted.azon>0 ) {
-				document.getElementById("results").innerHTML = "Üdvözlöm "+converted.name+"!";
+				// document.getElementById("results").innerHTML = "Üdvözlöm "+converted.name+"!";
 				sessionStorage.setItem("id",converted.azon);
 				sessionStorage.setItem("name",converted.name);
 				sessionStorage.setItem("email",user);
+				window.location.href = "Penz_kereso.html";
 			} else { 
 				document.getElementById("results").innerHTML = converted.name;
+				document.getElementById("results").style.backgroundColor="#ff0000" 
 				sessionStorage.removeItem("id");
 				sessionStorage.removeItem("name");
 				sessionStorage.removeItem("email");
 			}
 		} else {
 			document.getElementById("results").innerHTML = "Hibás ajax hívás!"
+			document.getElementById("results").style.backgroundColor="#ff0000" 
 		}
 	};			
 	xmlHttp.addEventListener("error", () => { document.getElementById("results").innerHTML = "Hiás szerver elérés!" })
@@ -77,11 +86,21 @@ function login() {
 	xmlHttp.send( "user="+user+"&password="+password );	
 }
 
+function kilepes() {				
+	sessionStorage.removeItem("id");
+	sessionStorage.removeItem("name");
+	sessionStorage.removeItem("email");
+	getsession();
+}
+
+
 function getsession() {
 	if ( sessionStorage.getItem("name") ) {
-		document.getElementById("login").innerHTML = "Üdvözlöm "+sessionStorage.getItem("name")+"!";
+		// document.getElementById("login").innerHTML = "Üdvözlöm "+sessionStorage.getItem("name")+"!";
+		document.getElementById("belepes").innerHTML = "<a class=\"nav-link\" href=\"javascript:kilepes();\">Kilépés ("+sessionStorage.getItem("name")+")</a>";
 	} else {
-		document.getElementById("login").innerHTML = "Nincs senki bejelentkezve!"
+		// document.getElementById("login").innerHTML = "Nincs senki bejelentkezve!";
+		document.getElementById("belepes").innerHTML = "<a class=\"nav-link\" href=\"belepes.html\">Belépés</a>";
 	}
 }
 
