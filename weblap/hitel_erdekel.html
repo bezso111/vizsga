@@ -38,34 +38,33 @@
               <div class="col">
                 <div id="text-section">
 
-        <h1>Hitelezési kisokos</h1><br>
-        <h3>A hitelezésnek (az általános banki szaknyelvben az angol alapján retail hitelezésnek is hívják) jelentős szerepe van az életciklusokhoz kapcsolódó, különböző finanszírozási igények kisimításában. A lakáscélú jelzáloghitel a fiatalok életindulását segíti, a későbbiekben lehetővé teszi a minőségi lakásmobilitást, a különböző fogyasztási hitelek pedig emelik az életszínvonalat vagy az átmeneti forráshiány menedzselését kezelik. 
-        A hitelezés gazdasági szempontból is nagy jelentőséggel bír, mivel támogatja a fogyasztást és a beruházásokat (pl. új lakások építésével), növeli a gazdaság teljesítményét.</h3><br>
-        <h2>De egy hitelfelvétel hosszú távon hatással van az Ön és családja életére, ezért mindig megfontoltan, körültekintően döntsön!</h2><br>
-        <h3>Ez az oldal olyan lehetőséget biztosit, amely egyszerű, biztonságos és kiszámitható hitelt kinál.</h3> 
+                        <h1>Hitelezési kisokos</h1><br>
+                        <h3>A hitelezésnek (az általános banki szaknyelvben az angol alapján retail hitelezésnek is hívják) jelentős szerepe van az életciklusokhoz kapcsolódó, különböző finanszírozási igények kisimításában. A lakáscélú jelzáloghitel a fiatalok életindulását segíti, a későbbiekben lehetővé teszi a minőségi lakásmobilitást, a különböző fogyasztási hitelek pedig emelik az életszínvonalat vagy az átmeneti forráshiány menedzselését kezelik. 
+                        A hitelezés gazdasági szempontból is nagy jelentőséggel bír, mivel támogatja a fogyasztást és a beruházásokat (pl. új lakások építésével), növeli a gazdaság teljesítményét.</h3><br>
+                        <h2>De egy hitelfelvétel hosszú távon hatással van az Ön és családja életére, ezért mindig megfontoltan, körültekintően döntsön!</h2><br>
+                        <h3>Ez az oldal olyan lehetőséget biztosit, amely egyszerű, biztonságos és kiszámitható hitelt kinál.</h3> 
 
                 
-        <div id="table_befektetes">
-            <input type="radio" name="amount" value="1000000" checked>
-            <label>1 millió ft</label>
-            <input type="radio" name="amount" value="2000000">
-            <label>2 millió ft</label>
-            <input type="radio" name="amount" value="5000000">
-            <label>5 millió ft</label><br><br>
-        
-            <input type="radio" name="futamido" value="3" checked>
-            <label>3 hónap</label>
-            <input type="radio" name="futamido" value="6">
-            <label>6 hónap</label><br><br>
-            <button onclick="szamolVegosszeget()">Kamatszámítás</button>
-            <div id="vegosszeg"></div>
-            <br><br>
-            <button type="button" onclick="KolcsonVetel" id="Kölcsönvetel">Érdekel!</button>
-            
+                    <div id="table_befektetes" class="radio-group">
+                        <input type="radio" class="radio-button" id="1millio" name="amount" value="1000000" checked>
+                        <label for="1millio" class="radio-text">1 millió ft</label>
+                        <input type="radio" class="radio-button" id="2millio" name="amount" value="2000000">
+                        <label for="2millio" class="radio-text">2 millió ft</label>
+                        <input type="radio" class="radio-button" id="5millio" name="amount" value="5000000">
+                        <label for="5millio" class="radio-text">5 millió ft</label><br><br>
+                        
+                        <input type="radio" class="radio-button" id="3honap" name="futamido" value="3" checked>
+                        <label for="3honap" class="radio-text">3 hónap</label>
+                        <input type="radio" class="radio-button" id="6honap"name="futamido" value="6">
+                        <label for="6honap" class="radio-text">6 hónap</label><br><br>
+                        <button onclick="szamolVegosszeget()">Kamatszámítás</button>
+                        <div id="vegosszeg"></div>
+                        <br><br>
+                        <button type="button" onclick="KolcsonVetel" id="Kölcsönvetel">Érdekel!</button>
+                    </div>       
                 </div>   
               </div>
             </div>
-        </div>
         </div>
     </body>
 </html>
