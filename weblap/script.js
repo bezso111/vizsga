@@ -98,9 +98,17 @@ function getsession() {
 	if ( sessionStorage.getItem("name") ) {
 		// document.getElementById("login").innerHTML = "Üdvözlöm "+sessionStorage.getItem("name")+"!";
 		document.getElementById("belepes").innerHTML = "<a class=\"nav-link\" href=\"javascript:kilepes();\">Kilépés ("+sessionStorage.getItem("name")+")</a>";
+		try {
+			document.getElementById("bekuldes").hidden = false;
+		}
+		catch (error) {}
 	} else {
 		// document.getElementById("login").innerHTML = "Nincs senki bejelentkezve!";
 		document.getElementById("belepes").innerHTML = "<a class=\"nav-link\" href=\"belepes.html\">Belépés</a>";
+		try {
+			document.getElementById("bekuldes").hidden = true;
+		}
+		catch (error) {}
 	}
 }
 
@@ -122,7 +130,7 @@ function szamolVegosszeget() {
 				var osszeg = parseInt(document.querySelector('input[name="amount"]:checked').value);
 				var futamido = parseInt(document.querySelector('input[name="futamido"]:checked').value);
 				// A kamat számítása
-				var kamat = osszeg * kamatmero * futamido /100;			
+				var kamat = osszeg * kamatmero * futamido /1200;			
 				// A végösszeg számítása
 				var vegosszeg = osszeg + kamat;
 				console.log("kamat:"+kamat+" osszeg:"+osszeg)
