@@ -139,6 +139,7 @@ function szamolVegosszeget() {
 				document.getElementById("vegosszeg").innerHTML = converted.name;
 			}
 		} else {
+			console.log(xmlHttp.statusText);
 			document.getElementById("vegosszeg").innerHTML = "Hibás ajax hívás!"
 		}
 	};			
@@ -147,38 +148,63 @@ function szamolVegosszeget() {
 	xmlHttp.send( );	
 }
 
-  function szamolVegosszeget2() {
-    // A formában megadott adatok lekérése
-    var osszegInput = document.querySelector('input[name="amount"]:checked');
-    var futamidoInput = document.querySelector('input[name="futamido"]:checked');
-  
-    if (osszegInput && futamidoInput) {
-      var osszeg = osszegInput.value;
-      var futamido = futamidoInput.value;
-  
-      // Kérjük le a valós idejű kamatméréseket egy másik webhelyről az Ajax hívások segítségével
-      var xhttp = new XMLHttpRequest();
-      xhttp.open("GET", "https://www.mnb.hu/web/fooldal", true);
-      xhttp.send();
-  
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          // A kapott adatok feldolgozása
-          var kamatmero = JSON.parse(this.responseText);
-		  console.log(this.responseText);
-		  
-          // A kamat számítása
-          var kamat = osszeg * kamatmero * futamido;
-  
-          // A végösszeg számítása
-          var vegosszeg = osszeg + kamat;
-  
-          // A végösszeg megjelenítése az elembe
-          document.getElementById("vegosszeg").textContent = vegosszeg;
-        } else {
-          document.getElementById("vegosszeg").textContent = "Nem adtál meg minden szükséges adatot!";
-        }
-      };
-    }
-  }
-  
+function KihelyezesiKerelem() {
+	var baseurl = "http://localhost:8080";
+	var funcurl = "/befektetes";
+	var url = baseurl+funcurl;
+	var osszeg = document.querySelector('input[name="amount"]:checked').value;
+	var futamido = document.querySelector('input[name="futamido"]:checked').value;
+	console.log("oszeg="+osszeg+"&futamido="+futamido+"&befektetes=\"befektetes\"&userid="+sessionStorage.getItem("id")+"&username="+sessionStorage.getItem("email"));
+	var xmlHttp = new XMLHttpRequest();						
+	xmlHttp.onload = function () {
+		if(xmlHttp.readyState === XMLHttpRequest.DONE && xmlHttp.status === 200) {
+			var converted = JSON.parse(xmlHttp.responseText)
+			console.log(converted)				
+			if (converted.errorcode===0 ) {
+				document.getElementById("results").innerHTML = converted.error;
+				document.getElementById("results").style.backgroundColor="#00ff00" 				
+			} else { 
+				document.getElementById("results").innerHTML = converted.error;
+				document.getElementById("results").style.backgroundColor="#ff0000" 				
+			}
+		} else {
+			document.getElementById("results").innerHTML = "Hibás ajax hívás!"
+			document.getElementById("results").style.backgroundColor="#ff0000" 
+		}
+	};			
+	xmlHttp.addEventListener("error", () => { document.getElementById("results").innerHTML = "Hiás szerver elérés!"; document.getElementById("results").style.backgroundColor="#ff0000";})
+	xmlHttp.open( "POST", url, true); // false for synchronous request  
+	xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlHttp.send( "oszeg="+osszeg+"&futamido="+futamido+"&befektetes=befektetes&userid="+sessionStorage.getItem("id")+"&username="+sessionStorage.getItem("email") );	
+}
+
+function KolcsonVetel() {
+	var baseurl = "http://localhost:8080";
+	var funcurl = "/befektetes";
+	var url = baseurl+funcurl;
+	var osszeg = document.querySelector('input[name="amount"]:checked').value;
+	var futamido = document.querySelector('input[name="futamido"]:checked').value;
+	console.log("oszeg="+osszeg+"&futamido="+futamido+"&befektetes=\"befektetes\"&userid="+sessionStorage.getItem("id")+"&username="+sessionStorage.getItem("email"));
+	var xmlHttp = new XMLHttpRequest();						
+	xmlHttp.onload = function () {
+		if(xmlHttp.readyState === XMLHttpRequest.DONE && xmlHttp.status === 200) {
+			var converted = JSON.parse(xmlHttp.responseText)
+			console.log(converted)				
+			if (converted.errorcode===0 ) {
+				document.getElementById("results").innerHTML = converted.error;
+				document.getElementById("results").style.backgroundColor="#00ff00" 				
+			} else { 
+				document.getElementById("results").innerHTML = converted.error;
+				document.getElementById("results").style.backgroundColor="#ff0000" 				
+			}
+		} else {
+			document.getElementById("results").innerHTML = "Hibás ajax hívás!"
+			document.getElementById("results").style.backgroundColor="#ff0000" 
+		}
+	};			
+	xmlHttp.addEventListener("error", () => { document.getElementById("results").innerHTML = "Hiás szerver elérés!"; document.getElementById("results").style.backgroundColor="#ff0000";})
+	xmlHttp.open( "POST", url, true); // false for synchronous request  
+	xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xmlHttp.send( "oszeg="+osszeg+"&futamido="+futamido+"&befektetes=hitel&userid="+sessionStorage.getItem("id")+"&username="+sessionStorage.getItem("email") );	
+}
+

@@ -21,6 +21,7 @@ public class RestServiceApplication {
 				registry.addMapping("/registerUser").allowedOrigins("*");
 				registry.addMapping("/loginUser").allowedOrigins("*");
 				registry.addMapping("/kamat").allowedOrigins("*");
+				registry.addMapping("/befektetes").allowedOrigins("*");
 			}
 		};
 	}
