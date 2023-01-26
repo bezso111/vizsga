@@ -22,7 +22,7 @@ function registeruserfunc() {
 				var converted = JSON.parse(xmlHttp.responseText)
 				console.log(converted)				
 				if (converted.errorcode===0) {
-					document.getElementById("results").innerHTML = "Sikeres Regisztrácíó!";
+					document.getElementById("results").innerHTML = "Sikeres Regisztráció!";
 					document.getElementById("results").style.backgroundColor="#00ff00";
 				} else if (converted.errorcode===1062 ) {
 					document.getElementById("results").innerHTML = "Ez az email cím már szerepelt";
@@ -95,13 +95,18 @@ function kilepes() {
 
 
 function getsession() {
+	console.log(document.querySelector('title').innerHTML);
 	if ( sessionStorage.getItem("name") ) {
 		// document.getElementById("login").innerHTML = "Üdvözlöm "+sessionStorage.getItem("name")+"!";
-		document.getElementById("belepes").innerHTML = "<a class=\"nav-link\" href=\"javascript:kilepes();\">Kilépés ("+sessionStorage.getItem("name")+")</a>";
-		try {
-			document.getElementById("bekuldes").hidden = false;
+		if (document.querySelector('title').innerHTML =="Belépés") {
+			window.location.href = "Penz_kereso.html";
+		} else {
+			document.getElementById("belepes").innerHTML = "<a class=\"nav-link\" href=\"javascript:kilepes();\">Kilépés ("+sessionStorage.getItem("name")+")</a>";
+			try {
+				document.getElementById("bekuldes").hidden = false;
+			}
+			catch (error) {}
 		}
-		catch (error) {}
 	} else {
 		// document.getElementById("login").innerHTML = "Nincs senki bejelentkezve!";
 		document.getElementById("belepes").innerHTML = "<a class=\"nav-link\" href=\"belepes.html\">Belépés</a>";
