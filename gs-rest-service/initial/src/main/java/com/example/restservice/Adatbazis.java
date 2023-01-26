@@ -138,7 +138,7 @@ public class Adatbazis implements Closeable {
                     count = stmnt.executeUpdate(query);
                     System.out.println(count);
                     errorcode=0;
-                    return "Sikeres öszerendelés";
+                    return "Sikeres összerendelés";
                 } else {
                     errorcode=1;
                     return "Hibás felvitel!!";
